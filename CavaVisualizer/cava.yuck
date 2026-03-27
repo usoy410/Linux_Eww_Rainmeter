@@ -1,14 +1,19 @@
 (defwidget visualizer []
-  (box :class "cava-container"
+  (box :class "cava-container" :orientation "vertical"
     (label :class "cava-bars" :text cava_output)
+        (box :class "controls" :orientation "h"
+        (button :class "previous-button" :onclick "playerctl previous" "󰒮")
+        (eventbox :onclick "playerctl play-pause" :class "pause-play-button"
+          (label :class "song-title" :text song_title :limit-width 25))
+        (button :class "next-button" :onclick "playerctl next" "󰒭")
+      )
   )
 )
-
 (defwindow visualizer_window
   :monitor 0
   :geometry (geometry :x "50%" 
                       :y "80%" 
-                      :width "400px"
+                      :width "400px"  ;; Adjust based on how many bars you set in CAVA
                       :height "100px" 
                       :anchor "top center")
   :stacking "bg"

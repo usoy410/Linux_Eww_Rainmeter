@@ -5,3 +5,17 @@
   letter-spacing: 2px;
   color: #ffffff;
 }
+
+.song-title {
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.controls button {
+  font-size: 1.5em;
+}
+
+.controls button:hover {
+  color: $color2;
+  /* A highlight color */
+}

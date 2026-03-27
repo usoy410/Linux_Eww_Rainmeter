@@ -1,1 +1,7 @@
 (deflisten cava_output "sh ./scripts/cava.sh")
+
+(deflisten song_title    :initial "No Music Playing"
+"playerctl metadata --format '{{title}}' --follow || echo 'No Music Playing'")
+
+(deflisten player_status :initial "Stopped"
+"playerctl metadata --format '{{status}}' --follow || echo 'Stopped'")
