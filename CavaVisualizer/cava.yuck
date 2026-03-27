@@ -1,0 +1,17 @@
+(defwidget visualizer []
+  (box :class "cava-container"
+    (label :class "cava-bars" :text cava_output)
+  )
+)
+
+(defwindow visualizer_window
+  :monitor 0
+  :geometry (geometry :x "50%" 
+                      :y "80%" 
+                      :width "400px"
+                      :height "100px" 
+                      :anchor "top center")
+  :stacking "bg"
+  :windowtype "desktop" 
+  :wm-ignore false
+  (visualizer))

@@ -1,0 +1,13 @@
+(defwidget clock_widget []
+  (box :orientation "v" :space-evenly false :class "clock-box"
+    (label :class "main-day" :text day)
+    (label :class "sub-date" :text date)
+    (label :class "sub-time" :text { "- " + time + " -" })
+  )
+)
+
+(defwindow clock
+  :monitor 0
+  :geometry (geometry :x "50%" :y "50%" :width "1000px" :height "100px" :anchor "center")
+  :stacking "bg"
+  (clock_widget))

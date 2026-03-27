@@ -1,0 +1,1 @@
+(deflisten cava_output "sh ./scripts/cava.sh")

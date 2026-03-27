@@ -1,0 +1,3 @@
+(defpoll time :interval "1s" "date '+%I:%M %p'")
+(defpoll day  :interval "1h" "date '+%A' | tr '[:lower:]' '[:upper:]'")
+(defpoll date :interval "1h" "date '+%d %B, %Y.' | tr '[:lower:]' '[:upper:]'")
