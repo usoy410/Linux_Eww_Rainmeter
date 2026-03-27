@@ -25,6 +25,16 @@ A simple audio visualizer using `cava`.
 - `scripts/cava.sh`: Script that processes `cava` output.
 - `style.scss`: Required CSS styles.
 
+## Font Used
+
+`Anurati` download it from https://font.download/font/anurati
+unzip it and move the Anurati-Regular.otf to ~/.local/share/fonts.
+if it doesn't exist create it.
+
+```bash
+mkdir -p ~/.local/share/fonts
+```
+
 ## Quick Setup (Recommended)
 
 Run the setup script from this repository root:
