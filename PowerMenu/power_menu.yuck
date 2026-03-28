@@ -1,0 +1,17 @@
+(defwidget power-menu []
+  (box :class "power-menu" :orientation "h" :spacing 10
+    (button :class "power-button" :onclick "bash ~/.config/veneer/eww/widgets/PowerMenu/script/power-action.sh poweroff" :tooltip "Power Off" "")
+    (button :class "power-button" :onclick "bash ~/.config/veneer/eww/widgets/PowerMenu/script/power-action.sh reboot" :tooltip "Reboot" "")
+    (button :class "power-button" :onclick "niri msg action quit" :tooltip "Quit" "󰍃")
+  )
+)
+
+(defwindow power-menu
+  :monitor 0
+  :geometry (geometry :x "10px" :y "90%" :width "120px" :height "40px")
+  :stacking "bg"
+  :windowtype "dock"
+  :anchor "bottom left"
+  :wm-ignore false
+  (power-menu)
+)
