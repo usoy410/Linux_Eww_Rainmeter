@@ -1,5 +1,17 @@
 ;; --- Tool Menu (Battery + Wifi) ---
 
+(defpoll battery_percentage_var :interval "15s"
+  "sh ~/.config/veneer/eww/widgets/ToolMenu/script/get_battery_info.sh | cut -d'|' -f1")
+
+(defpoll battery_icon_var :interval "15s"
+  "sh ~/.config/veneer/eww/widgets/ToolMenu/script/get_battery_info.sh | cut -d'|' -f2")
+
+(defpoll wifi_name :interval "10s"
+  "sh ~/.config/veneer/eww/widgets/ToolMenu/script/get_wifi_info.sh | cut -d'|' -f1")
+
+(defpoll wifi_icon :interval "10s"
+  "sh ~/.config/veneer/eww/widgets/ToolMenu/script/get_wifi_info.sh | cut -d'|' -f2")
+
 (defwidget tool_menu_widget []
   (box :class "tool-menu-widget" :orientation "horizontal" :space-evenly false
     (eventbox :tooltip battery_percentage_var

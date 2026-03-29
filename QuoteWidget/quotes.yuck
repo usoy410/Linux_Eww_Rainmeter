@@ -2,7 +2,7 @@
 
 (defwidget quotes_widget []
   (box :class "quotes-widget" :orientation "vertical" :space-evenly false
-    (label :class "quote-text" :text quote_var :wrap true)
+    (label :class "quote-text" :text quote_var :wrap true :xalign 0 :justify "left")
     (box :halign "end" :space-evenly false
       (label :class "author-text" :text "- ")
       (label :class "author-text" :text author_var)
@@ -12,7 +12,7 @@
 
 (defwindow quotes_window
   :monitor 0
-  :geometry (geometry :x "70%" :y "40%" :width "400px" :height "150px")
+  :geometry (geometry :x "70%" :y "40%" :width "400px" :height "220px")
   :anchor "right"
   :stacking "bg"
   :windowtype "dock"
