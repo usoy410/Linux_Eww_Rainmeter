@@ -1,5 +1,5 @@
 ;; Runs fetch script periodically for side effects (file updates).
-(defpoll quote_fetch_tick :interval "12h" "sh ~/.config/veneer/eww/widgets/QuoteWidget/script/fetch_quote.sh >/dev/null 2>&1; date +%s")
+(defpoll quote_fetch_tick :interval "30m" "sh ~/.config/veneer/eww/widgets/QuoteWidget/script/fetch_quote.sh >/dev/null 2>&1; date +%s")
 
-(defpoll quote_var :interval "60s" "cat ~/.config/veneer/eww/widgets/QuoteWidget/quotes/quote.txt 2>/dev/null || echo 'No quote available'")
+(defpoll quote_var :interval "60s" "sh -c 'if [ -f ~/.config/veneer/eww/widgets/QuoteWidget/quotes/quote.txt ]; then fold -s -w 38 ~/.config/veneer/eww/widgets/QuoteWidget/quotes/quote.txt; else echo No\ quote\ available; fi'")
 (defpoll author_var :interval "60s" "cat ~/.config/veneer/eww/widgets/QuoteWidget/quotes/author.txt 2>/dev/null || echo 'Unknown'")

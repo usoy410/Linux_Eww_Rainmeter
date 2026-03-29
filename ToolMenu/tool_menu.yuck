@@ -1,30 +1,16 @@
 ;; --- Tool Menu (Battery + Wifi) ---
-
-(defpoll battery_percentage_var :interval "15s"
-  "sh ~/.config/veneer/eww/widgets/ToolMenu/script/get_battery_info.sh | cut -d'|' -f1")
-
-(defpoll battery_icon_var :interval "15s"
-  "sh ~/.config/veneer/eww/widgets/ToolMenu/script/get_battery_info.sh | cut -d'|' -f2")
-
-(defpoll wifi_name :interval "10s"
-  "sh ~/.config/veneer/eww/widgets/ToolMenu/script/get_wifi_info.sh | cut -d'|' -f1")
-
-(defpoll wifi_icon :interval "10s"
-  "sh ~/.config/veneer/eww/widgets/ToolMenu/script/get_wifi_info.sh | cut -d'|' -f2")
-
 (defwidget tool_menu_widget []
-  (box :class "tool-menu-widget" :orientation "horizontal" :space-evenly false
-    (eventbox :tooltip battery_percentage_var
-      (label :class "battery-icon" :text battery_icon_var))
-    (eventbox
+  (box :class "tool-menu-widget" :orientation "horizontal" :spacing 10
+    (button :class "wifi-button"
       :onclick "~/.config/veneer/eww/widgets/ToolMenu/wifi_popup/popup_wifi.sh"
       :tooltip wifi_name
-      (box :class "wifi-button" :space-evenly false
-        (label :text wifi_icon)))))
+      (label :text wifi_icon))
+    (button :tooltip battery_percentage_var
+      (label :class "battery-icon" :text battery_icon_var))))
 
 (defwindow tool_menu_window
   :monitor 0
-  :geometry (geometry :x "93%" :y "5%" :width "90px" :height "50px")
+  :geometry (geometry :x "93%" :y "5%" :width "104px" :height "50px")
   :anchor "top right"
   :stacking "bg"
   :windowtype "dock"

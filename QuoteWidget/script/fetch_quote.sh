@@ -21,13 +21,25 @@ if [ -f "$DATE_FILE" ] && [ "$(cat "$DATE_FILE")" = "$TODAY" ]; then
 fi
 
 # Fetch quote from API
-RESPONSE=$(curl -s --connect-timeout 10 "https://zenquotes.io/api/random")
+RESPONSE=$(curl -fsS --connect-timeout 10 --max-time 20 "https://zenquotes.io/api/random" 2>/dev/null || true)
 
-# Check if response is valid JSON array
-if echo "$RESPONSE" | jq -e '.[0] | has("q") and has("a")' >/dev/null 2>&1; then
-    QUOTE=$(echo "$RESPONSE" | jq -r '.[0].q')
-    AUTHOR=$(echo "$RESPONSE" | jq -r '.[0].a')
+# Parse response, preferring jq when available
+QUOTE=""
+AUTHOR=""
 
+if [ -n "$RESPONSE" ]; then
+    if command -v jq >/dev/null 2>&1 && echo "$RESPONSE" | jq -e '.[0] | has("q") and has("a")' >/dev/null 2>&1; then
+        QUOTE=$(echo "$RESPONSE" | jq -r '.[0].q')
+        AUTHOR=$(echo "$RESPONSE" | jq -r '.[0].a')
+    else
+        QUOTE=$(printf '%s' "$RESPONSE" | sed -n 's/.*"q"[[:space:]]*:[[:space:]]*"\([^"]*\)".*/\1/p' | head -n1)
+        AUTHOR=$(printf '%s' "$RESPONSE" | sed -n 's/.*"a"[[:space:]]*:[[:space:]]*"\([^"]*\)".*/\1/p' | head -n1)
+        QUOTE=$(printf '%s' "$QUOTE" | sed 's/\\"/"/g; s/\\n/ /g')
+        AUTHOR=$(printf '%s' "$AUTHOR" | sed 's/\\"/"/g; s/\\n/ /g')
+    fi
+fi
+
+if [ -n "$QUOTE" ] && [ -n "$AUTHOR" ]; then
     # Write to quote file
     echo "\"$QUOTE\"" > "$QUOTE_FILE"
     echo "$AUTHOR" > "$AUTHOR_FILE"
@@ -37,5 +49,10 @@ if echo "$RESPONSE" | jq -e '.[0] | has("q") and has("a")' >/dev/null 2>&1; then
 
     echo "Fetched new quote: $QUOTE - $AUTHOR"
 else
+    # Ensure there is always a displayable quote even when API/deps fail.
+    if [ ! -s "$QUOTE_FILE" ] || [ ! -s "$AUTHOR_FILE" ]; then
+        echo "\"Stay curious, keep building.\"" > "$QUOTE_FILE"
+        echo "Veneer" > "$AUTHOR_FILE"
+    fi
     echo "Failed to fetch quote or invalid response. Keeping previous quote."
 fi

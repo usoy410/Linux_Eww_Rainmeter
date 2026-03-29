@@ -12,7 +12,7 @@
 
 (defwindow quotes_window
   :monitor 0
-  :geometry (geometry :x "70%" :y "40%" :width "400px" :height "220px")
+  :geometry (geometry :x "70%" :y "40%" :width "430px" :height "250px")
   :anchor "right"
   :stacking "bg"
   :windowtype "dock"
