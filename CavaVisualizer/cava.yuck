@@ -11,12 +11,12 @@
 )
 (defwindow visualizer_window
   :monitor 0
-  :geometry (geometry :x "50%" 
-                      :y "80%" 
+  :geometry (geometry :x "50%"
+                      :y "80%"
                       :width "400px"  ;; Adjust based on how many bars you set in CAVA
-                      :height "100px" 
+                      :height "100px"
                       :anchor "top center")
   :stacking "bg"
-  :windowtype "desktop" 
+  :windowtype "desktop"
   :wm-ignore false
   (visualizer))

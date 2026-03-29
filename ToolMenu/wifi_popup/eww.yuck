@@ -23,7 +23,7 @@
                 for network in wifi_networks
                 (
                     button
-                    :onclick "/home/usoy/.config/niri/eww/widgets/wifi_popup/connect_wifi.sh '${network.SSID}'"
+                    :onclick "~/.config/veneer/eww/widgets/ToolMenu/wifi_popup/connect_wifi.sh '${network.SSID}'"
                     (
                         box
                         :orientation "horizontal"

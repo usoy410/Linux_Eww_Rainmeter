@@ -8,31 +8,14 @@ Eww widget collection.
 
 ## Contents
 
-### 1. ClockRainmeter
-
-A minimalist clock widget showing the day, date, and time.
-
-- `clock.yuck`: Widget and window definitions.
-- `variables.yuck`: Time/day/date polls.
-- `style.scss`: Required CSS styles.
-
-### 2. CavaVisualizer
-
-A simple audio visualizer using `cava`.
-
-- `cava.yuck`: Widget and window definitions.
-- `variables.yuck`: Cava listen variable.
-- `scripts/cava.sh`: Script that processes `cava` output.
-- `style.scss`: Required CSS styles.
-
-### 3. Utility and Info Widgets
-
+- `ClockRainmeter`: A minimalist clock widget showing the day, date, and time.
+- `CavaVisualizer`: A simple audio visualizer using `cava`.
 - `ToolMenu`: Quick access widget for system tools like battery and Wi-Fi controls.
 - `QuoteWidget`: Displays rotating inspirational quotes.
 - `Calendar`: Compact calendar view widget.
 - `TimeClock`: Alternate clock-style widget.
 
-## Font Used
+## Special Font Used for ClockRainmeter
 
 `Anurati` download it from https://font.download/font/anurati
 unzip it and move the Anurati-Regular.otf to ~/.local/share/fonts.
