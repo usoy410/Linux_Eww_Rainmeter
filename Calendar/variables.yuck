@@ -1,0 +1,4 @@
+(defpoll header_date :interval "60s" `LC_TIME=C date "+%A, %B %d"`)
+(defpoll current_day :interval "60s" `LC_TIME=C date +%d`)
+(defpoll current_month :interval "60s" `LC_TIME=C date +%m`)
+(defpoll current_year :interval "60s" `LC_TIME=C date +%Y`)

@@ -1,0 +1,66 @@
+// Callendar widget
+.calendar-widget {
+  background-color: rgba(12, 16, 19, 0.7);
+  border: 2px solid #80a0c0;
+  border-radius: 8px;
+  padding: 16px;
+}
+
+.cal-header {
+  margin-bottom: 0px;
+  padding-left: 4px;
+}
+
+.cal-icon {
+  font-size: 1.4em;
+  margin-right: 2px;
+}
+
+.cal-title {
+  font-size: 1.1em;
+  font-weight: 500;
+  color: #d8dee9;
+}
+
+.cal {
+  color: #8fbcbb;
+  padding: 8px;
+  font-size: 0.95em;
+
+  // Calendar grid layout
+  calendar {
+    padding: 1px;
+  }
+
+  // Current day highlight (selected is today)
+  calendar:selected {
+    background-color: #80a0c0;
+    color: #1e222a;
+    border-radius: 4px;
+    font-weight: bold;
+  }
+
+  // Current day highlight when not selected
+  calendar:indeterminate {
+    background-color: #80a0c0;
+    color: #1e222a;
+    border-radius: 4px;
+    font-weight: bold;
+  }
+
+  // Default day styling
+  calendar:active {
+    color: #8fbcbb;
+  }
+
+  // Days outside current month
+  calendar:disabled {
+    color: #5e6a7e;
+  }
+
+  // Hover effect
+  calendar:hover {
+    background-color: rgba(128, 160, 192, 0.9);
+    border-radius: 4px;
+  }
+}

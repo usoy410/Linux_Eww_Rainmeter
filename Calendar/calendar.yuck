@@ -1,21 +1,8 @@
-(defwindow cal
-  :monitor 0
-  :windowtype "dock"
-  :stacking "bg"
-  :geometry (geometry
-    :x "200px"
-    :y "250px"
-    :width "380px"
-    :height "200px"
-    :anchor "top left")
-  (cal))
-
 (defwidget cal []
-  (eventbox :onhoverlost "eww --config /home/usoy/.config/niri/eww close cal"
-    (box :class "calendar-widget"
-         :orientation "v"
-         :space-evenly false
-         :spacing 10
+  (box :class "calendar-widget"
+       :orientation "v"
+       :space-evenly false
+       :spacing 10
     ;; Header with icon and date
     (box :class "cal-header"
          :orientation "h"
@@ -29,7 +16,19 @@
     (calendar :class "cal"
               :day current_day
               :month current_month
-              :year current_year))))
+              :year current_year)))
 
 
 
+
+(defwindow cal
+  :monitor 0
+  :windowtype "dock"
+  :stacking "bg"
+  :geometry (geometry
+    :x "200px"
+    :y "250px"
+    :width "380px"
+    :height "200px"
+    )
+  (cal))
