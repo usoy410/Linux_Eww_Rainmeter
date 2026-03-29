@@ -1,0 +1,2 @@
+(defpoll time_var :interval "1s" "LC_TIME=C date +'%H:%M'")
+(defpoll date_var :interval "1h" "LC_TIME=C date +'%a, %d %b'")

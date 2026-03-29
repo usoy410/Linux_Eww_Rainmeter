@@ -1,0 +1,18 @@
+;; --- Clock Widget and Window ---
+
+(defwidget clock_widget []
+  (box :class "clock-widget" :orientation "horizontal" :space-evenly false
+    (label :class "time" :text time_var)
+     (label :class "vline" :text "|")
+      (label :text date_var)
+  )
+)
+
+(defwindow clock_window
+  :monitor 0
+  :geometry (geometry :x "10px" :y "15px" :width "350px" :height "100px")
+  :stacking "bg"
+  :windowtype "dock"
+  :wm-ignore false
+  (clock_widget)
+)

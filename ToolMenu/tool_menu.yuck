@@ -1,0 +1,22 @@
+;; --- Tool Menu (Battery + Wifi) ---
+
+(defwidget tool_menu_widget []
+  (box :class "tool-menu-widget" :orientation "horizontal" :space-evenly false
+    (eventbox :tooltip battery_percentage_var
+      (label :class "battery-icon" :text battery_icon_var))
+    (eventbox
+      :onclick "~/.config/veneer/eww/widgets/ToolMenu/wifi_popup/popup_wifi.sh"
+      :tooltip wifi_name
+      (box :class "wifi-button" :space-evenly false
+        (label :text wifi_icon)))))
+
+(defwindow tool_menu_window
+  :monitor 0
+  :geometry (geometry :x "93%" :y "5%" :width "90px" :height "50px")
+  :anchor "top right"
+  :stacking "bg"
+  :windowtype "dock"
+  :wm-ignore false
+  (tool_menu_widget)
+)
+

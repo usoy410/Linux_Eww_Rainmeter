@@ -1,0 +1,21 @@
+;; --- Quotes Widget ---
+
+(defwidget quotes_widget []
+  (box :class "quotes-widget" :orientation "vertical" :space-evenly false
+    (label :class "quote-text" :text quote_var :wrap true)
+    (box :halign "end" :space-evenly false
+      (label :class "author-text" :text "- ")
+      (label :class "author-text" :text author_var)
+    )
+  )
+)
+
+(defwindow quotes_window
+  :monitor 0
+  :geometry (geometry :x "70%" :y "40%" :width "400px" :height "150px")
+  :anchor "right"
+  :stacking "bg"
+  :windowtype "dock"
+  :wm-ignore false
+  (quotes_widget)
+)

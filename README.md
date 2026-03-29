@@ -1,6 +1,6 @@
 # RainMeter Eww Widgets
 
-`ClockRainmeter` and `CavaVisualizer` widgets.
+Eww widget collection.
 
 ## Sample
 
@@ -25,6 +25,13 @@ A simple audio visualizer using `cava`.
 - `scripts/cava.sh`: Script that processes `cava` output.
 - `style.scss`: Required CSS styles.
 
+### 3. Utility and Info Widgets
+
+- `ToolMenu`: Quick access widget for system tools like battery and Wi-Fi controls.
+- `QuoteWidget`: Displays rotating inspirational quotes.
+- `Calendar`: Compact calendar view widget.
+- `TimeClock`: Alternate clock-style widget.
+
 ## Font Used
 
 `Anurati` download it from https://font.download/font/anurati
@@ -35,33 +42,12 @@ if it doesn't exist create it.
 mkdir -p ~/.local/share/fonts
 ```
 
-## Quick Setup (Recommended)
+## Manual Usage
 
-Run the setup script from this repository root:
+Clone this repository and copy the widget folder(s) you want into your Eww config.
+Then include the needed `.yuck` and `style.scss` files in your root Eww files.
 
-```bash
-git clone https://github.com/usoy410/Linux_Eww_Rainmeter.git
-cd Linux_Eww_Rainmeter
-chmod +x ./scripts/setup.sh ./scripts/run.sh
-./scripts/setup.sh
-```
-
-What setup does:
-
-1. Installs required dependencies (`eww`, `cava`) using your system package manager (apt/pacman/dnf/zypper).
-2. Creates an Eww config at `~/.config/eww`.
-3. Copies both widget folders there.
-4. Generates `eww.yuck` and `eww.scss` that include/import both widgets.
-
-Then start both widgets:
-
-```bash
-./scripts/run.sh
-```
-
-## Manual Run Commands
-
-If you prefer running manually:
+Example commands for Clock + Cava:
 
 ```bash
 eww --config ~/.config/eww daemon
@@ -78,15 +64,14 @@ eww --config ~/.config/eww close visualizer_window
 
 ## Autostart on Login (Optional)
 
-If you want these widgets to start automatically when you log in, pick one approach below.
-Make sure to change the path if you did not clone in the home to this repository's scripts/run.sh in startup entries.
+If you want widgets to start automatically, add your own Eww launch commands to your WM/DE startup config.
 
 ### 1. Hyprland
 
 Add this line to `~/.config/hypr/hyprland.conf`:
 
 ```ini
-exec-once = /bin/sh -c '~/Linux_Eww_Rainmeter/scripts/run.sh'
+exec-once = /bin/sh -c 'eww --config ~/.config/eww daemon; eww --config ~/.config/eww open clock; eww --config ~/.config/eww open visualizer_window'
 ```
 
 ### 2. Niri
@@ -94,16 +79,16 @@ exec-once = /bin/sh -c '~/Linux_Eww_Rainmeter/scripts/run.sh'
 Add this in `~/.config/niri/config.kdl`:
 
 ```kdl
-spawn-at-startup "/bin/sh" "-c" "~/Linux_Eww_Rainmeter/scripts/run.sh"
+spawn-at-startup "/bin/sh" "-c" "eww --config ~/.config/eww daemon; eww --config ~/.config/eww open clock; eww --config ~/.config/eww open visualizer_window"
 ```
 
 ### 3. Other Desktop/WMs
 
-Just add it to whatever Window manager you have in its start up.
+Add equivalent Eww daemon/open commands to your startup mechanism.
 
 ## Dependency Note
 
-If automatic dependency installation cannot find `eww` on your distro repositories, install `eww` manually and re-run setup.
+Install dependencies manually based on the widget you use. For example, `CavaVisualizer` needs `cava`.
 
 ## References
 

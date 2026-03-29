@@ -1,0 +1,39 @@
+(
+    defpoll wifi_networks :interval "5s"
+    `~/.config/veneer/eww/widgets/ToolMenu/wifi_popup/list_networks.sh`
+)
+
+(
+    defwindow wifi_popup
+    :monitor 0
+    :stacking "bg"
+    :exclusive false
+    :geometry
+    (geometry :anchor "top right" :y "5" :x "5" :width "300px" :height "755px")
+    (
+        eventbox
+        :onhoverlost "eww --config ~/.config/veneer/eww/widgets/ToolMenu/wifi_popup/ close wifi_popup"
+        (
+            box
+            :class "wifi-popup"
+            :orientation "vertical"
+            :space-evenly false
+            (label :text "Available Wi-Fi Networks")
+            (
+                for network in wifi_networks
+                (
+                    button
+                    :onclick "/home/usoy/.config/niri/eww/widgets/wifi_popup/connect_wifi.sh '${network.SSID}'"
+                    (
+                        box
+                        :orientation "horizontal"
+                        :space-evenly false
+                        (label :text "${network.SSID}")
+                        (label :text "${network.SECURITY}")
+                        (label :text "${network.BARS}")
+                    )
+                )
+            )
+        )
+    )
+)

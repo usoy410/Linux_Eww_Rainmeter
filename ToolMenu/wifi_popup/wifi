@@ -1,0 +1,32 @@
+#!/bin/bash
+
+case "$1" in
+    icon)
+        # Get wifi signal strength
+        signal=$(nmcli -t -f ACTIVE,SIGNAL dev wifi | grep '^yes' | cut -d: -f2)
+        if [ -z "$signal" ]; then
+            echo "󰖪"  # disconnected
+        elif [ "$signal" -ge 75 ]; then
+            echo "󰤨"  # strong
+        elif [ "$signal" -ge 50 ]; then
+            echo "󰤥"  # good
+        elif [ "$signal" -ge 25 ]; then
+            echo "󰤢"  # weak
+        else
+            echo "󰤟"  # very weak
+        fi
+        ;;
+    name)
+        # Get current SSID
+        ssid=$(nmcli -t -f ACTIVE,SSID dev wifi | grep '^yes' | cut -d: -f2)
+        if [ -z "$ssid" ]; then
+            echo "Disconnected"
+        else
+            echo "$ssid"
+        fi
+        ;;
+    *)
+        echo "Usage: $0 {icon|name}"
+        exit 1
+        ;;
+esac
