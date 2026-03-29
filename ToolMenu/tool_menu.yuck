@@ -1,7 +1,7 @@
 ;; --- Tool Menu (Battery + Wifi) ---
 
 (defwidget tool_menu_widget []
-  (box :class "tool-menu-widget" :orientation "horizontal" :spacing 10
+  (box :class "tool-menu-widget" :orientation "horizontal" :space-evenly false :spacing 15
     (button :class "wifi-button"
       :onclick "~/.config/veneer/eww/widgets/ToolMenu/wifi_popup/popup_wifi.sh"
       :tooltip wifi_name
