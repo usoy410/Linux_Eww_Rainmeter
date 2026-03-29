@@ -11,4 +11,3 @@
 
 (defpoll wifi_icon :interval "5s"
   "sh ~/.config/veneer/eww/widgets/ToolMenu/wifi_popup/wifi icon")
-(defpoll wifi_name :interval "2s" "~/.config/veneer/eww/widgets/ToolMenu/wifi_popup/wifi name")
