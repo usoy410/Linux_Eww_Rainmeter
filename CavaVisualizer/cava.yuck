@@ -15,7 +15,7 @@
                       :y "80%"
                       :width "400px"  ;; Adjust based on how many bars you set in CAVA
                       :height "100px"
-                      :anchor "top center")
+                      )
   :stacking "bg"
   :windowtype "desktop"
   :wm-ignore false

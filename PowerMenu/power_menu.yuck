@@ -11,7 +11,6 @@
   :geometry (geometry :x "10px" :y "90%" :width "120px" :height "40px")
   :stacking "bg"
   :windowtype "dock"
-  :anchor "bottom left"
   :wm-ignore false
   (power-menu)
 )

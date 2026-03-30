@@ -9,7 +9,7 @@
     :stacking "bg"
     :exclusive false
     :geometry
-    (geometry :anchor "top right" :y "5" :x "5" :width "300px" :height "755px")
+    (geometry :y "5" :x "5" :width "300px" :height "755px")
     (
         eventbox
         :onhoverlost "eww --config ~/.config/veneer/eww/widgets/ToolMenu/wifi_popup/ close wifi_popup"
